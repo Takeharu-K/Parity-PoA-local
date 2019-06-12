@@ -22,11 +22,11 @@ Ethereumのプライベートネットをローカル環境で構築します．
 7. トランザクションの送信
 
 ## 1. Parityのインストール
-###Ubuntu or Mac（Homebrewインストール済み）
+### Ubuntu or Mac（Homebrewインストール済み）
 ```
 $ bash <(curl https://get.parity.io -L)
 ```
-###Linux or Mac or Windows
+### Linux or Mac or Windows
 [ここからダウンロード](https://github.com/paritytech/parity-ethereum/releases)
 ダウンロードしてきたプログラムに実行権限を与える
 
@@ -200,7 +200,7 @@ $ curl --data '{"jsonrpc":"2.0","method":"parity_newAccountFromPhrase","params":
 ```
 
 ## 5. ノードの起動
-###5.1. パスワードファイルの作成とノード情報の追加
+### 5.1. パスワードファイルの作成とノード情報の追加
 
 ```pwds:node.pwds
 node0
@@ -245,7 +245,7 @@ engine_signer = "0x00Aa39d30F0D20FF03a22cCfc30B7EfbFca597C2"
 reseal_on_txs = "none"
 ```
 
-###5.2. 各ノードの起動
+### 5.2. 各ノードの起動
 ```
 $ parity --config node0.toml
 ```
@@ -255,12 +255,12 @@ $ parity --config node1.toml
 ```
 
 ## 6. ノード間の接続
-###6.1. node0のenodeアドレスを取得
+### 6.1. node0のenodeアドレスを取得
 
 ```
 $ curl --data '{"jsonrpc":"2.0","method":"parity_enode","params":[],"id":0}' -H "Content-Type: application/json" -X POST localhost:8540
 ```
-###6.2. 獲得したenodeアドレスを登録
+### 6.2. 獲得したenodeアドレスを登録
 `enode://RESULT`に上で確認したアドレスを入れる．
 
 ```
@@ -270,12 +270,12 @@ curl --data '{"jsonrpc":"2.0","method":"parity_addReservedPeer","params":["enode
 ピアの数が1/25になっていたら接続成功！
 
 ## 7. トランザクションの送信
-###7.1. ユーザーアカウントからnode1にトークン送信
+### 7.1. ユーザーアカウントからnode1にトークン送信
 ```
 $ curl --data '{"jsonrpc":"2.0","method":"personal_sendTransaction","params":[{"from":"0x004ec07d2329997267Ec62b4166639513386F32E","to":"0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e","value":"0xde0b6b3a7640000"}, "user"],"id":0}' -H "Content-Type: application/json" -X POST localhost:8540
 ```
 
-###7.2. node1のトークン残高確認
+### 7.2. node1のトークン残高確認
 ```
 $ curl --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0x00Bd138aBD70e2F00903268F3Db08f2D25677C9e", "latest"],"id":1}' -H "Content-Type: application/json" -X POST localhost:8540
 ```
@@ -290,4 +290,4 @@ Parityクライアントを用いてプライベートネットをローカル�
 [Parity 公式ドキュメント インストール手順](https://wiki.parity.io/Setup)
 [Parity 公式ドキュメント PoA チュートリアル](https://wiki.parity.io/Demo-PoA-tutorial)
 
-#Happy Hacking :sunglasses: !
+# Happy Hacking :sunglasses: !
